@@ -95,40 +95,68 @@ export function Pengurus() {
       </Box>
 
       {/* 1. SECTION BPH */}
-      <Title order={3} ta="center" mb="xl" className={classes.sectionTitle}>
-        Badan Pengurus Harian
-      </Title>
-      
-      <Grid gutter="xl" justify="center" mb={70}>
-        {bphData.map((person) => (
-          <Grid.Col span={{ base: 12, sm: 6, md: 3 }} key={person.nim}>
-            <Card radius="lg" padding="xl" className={classes.bphCard} ta="center" h="100%">
-              <div className={classes.avatarWrapper}>
-                <Avatar 
-                  src={person.foto} 
-                  size={130} 
-                  radius="100%" 
-                  className={classes.bphAvatar}
-                  mb="md" 
-                />
-              </div>
-              <Stack gap="xs" justify="center" style={{ flex: 1 }}>
-                <Badge variant="gradient" gradient={{ from: 'red.7', to: 'orange.6', deg: 90 }} size="md" mx="auto">
-                  {person.jabatan}
-                </Badge>
-                <Box>
-                  <Text fw={800} size="lg" lh={1.2}>{person.nama}</Text>
-                  <Text size="xs" c="dimmed" mt={4} fw={500}>{person.nim}</Text>
-                  {/* Menampilkan Jurusan BPH */}
-                  <Text size="xs" c="red.8" fw={700} mt={2}>{person.jurusan}</Text>
-                </Box>
-              </Stack>
-            </Card>
-          </Grid.Col>
-        ))}
-      </Grid>
+      <Box mb={80} mt={40}>
+        <Title order={2} ta="center" mb={70} className={classes.sectionTitle}>
+          Badan Pengurus Harian
+        </Title>
+        
+        <Grid gutter={{ base: 30, md: 40 }} justify="center">
+          {bphData.map((person) => (
+            <Grid.Col span={{ base: 12, sm: 6, md: 3 }} key={person.nim}>
+              {/* Card menggunakan radius xl agar lebih luwes */}
+              <Card radius="xl" className={classes.bphCard} h="100%">
+                
+                {/* Elemen dekorasi background di bagian atas Card */}
+                <div className={classes.cardHeaderShape} />
 
-      <Divider my={50} variant="dashed" color="gray.3" />
+                {/* Wrapper Avatar */}
+                <div className={classes.avatarWrapper}>
+                  <Avatar 
+                    src={person.foto} 
+                    size={120} 
+                    radius="100%" 
+                    className={classes.bphAvatar}
+                  />
+                </div>
+
+                <Stack gap="xs" justify="flex-start" align="center" mt="md" className={classes.cardContent}>
+                  {/* Badge dibuat varian 'light' agar lebih modern dan elegan */}
+                  <Badge 
+                    variant="light" 
+                    color="red.7" 
+                    size="lg" 
+                    radius="xl"
+                    fw={800}
+                    className={classes.roleBadge}
+                  >
+                    {person.jabatan}
+                  </Badge>
+
+                  <Box ta="center" mt={10}>
+                    <Text fw={800} size="xl" lh={1.2} className={classes.nameText}>
+                      {person.nama}
+                    </Text>
+                    <Text size="sm" c="dimmed" mt={4} fw={500} style={{ letterSpacing: '1px' }}>
+                      {person.nim}
+                    </Text>
+                    
+                    {/* Jurusan dengan aksen titik dekoratif */}
+                    <Group gap={8} justify="center" mt={12}>
+                      {/* <div className={classes.dotSeparator} /> */}
+                      <Text size="xs" c="red.7" fw={800} tt="uppercase" style={{ letterSpacing: '0.5px' }}>
+                        {person.jurusan}
+                      </Text>
+                      {/* <div className={classes.dotSeparator} /> */}
+                    </Group>
+                  </Box>
+                </Stack>
+              </Card>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Box>
+
+      <Divider my={60} variant="dashed" color="gray.2" />
 
       {/* 2. SECTION DIVISI */}
       <Title order={3} ta="center" mb="xl" className={classes.sectionTitle}>
@@ -175,20 +203,27 @@ export function Pengurus() {
         opened={opened} 
         onClose={close} 
         withCloseButton={false} 
-        // centered
-        yOffset={90} // <--- TAMBAHKAN INI (Jarak dari atas layar, melewati Navbar 70px)
+        yOffset={90}
         size="lg"
         radius="lg"
         padding={0} 
         overlayProps={{ backgroundOpacity: 0.6, blur: 5 }}
         transitionProps={{ transition: 'pop', duration: 300 }}
-        // style={{ paddingTop: '140px' }}
-        // zIndex={10000} 
       >
         {selectedDivisi && (
-          <Box pb="xl" >
-            {/* BANNER HEADER DIVISI */}
-            <div style={{ position: 'relative', height: '120px', overflow: 'hidden' ,borderTopLeftRadius: '16px', borderTopRightRadius: '16px' }}>
+          <Box pb="xl">
+            {/* BANNER HEADER DIVISI DIBUAT STICKY */}
+            <div style={{ 
+              position: 'sticky', // ✅ INI YANG MEMBUATNYA STICKY
+              top: 0,             // ✅ HARUS ADA AGAR TAHU KAPAN MULAI MENEMPEL
+              zIndex: 10,         // ✅ AGAR SELALU BERADA DI ATAS KONTEN BAWAHNYA
+              height: '120px', 
+              overflow: 'hidden', 
+              borderTopLeftRadius: '16px', 
+              borderTopRightRadius: '16px',
+              // Tambahan shadow tipis yang muncul saat di-scroll
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)' 
+            }}>
               <Image 
                 src={selectedDivisi.foto} 
                 h="100%"
@@ -210,7 +245,7 @@ export function Pengurus() {
 
               <Box style={{ position: 'absolute', bottom: '20px', left: '24px', right: '24px' }}>
                 <Title order={2} c="white" style={{ letterSpacing: 0.5 }}>{selectedDivisi.nama}</Title>
-                <Text c="gray.4" size="md" mt={4} fw={500}>{selectedDivisi.deskripsi}</Text>
+                <Text c="gray.4" size="md" mt={4} fw={500} lineClamp={1}>{selectedDivisi.deskripsi}</Text>
               </Box>
             </div>
 
@@ -241,7 +276,6 @@ export function Pengurus() {
                       </Badge>
                       <Text fw={800} size="sm" lh={1.2} lineClamp={2}>{anggota.nama}</Text>
                       <Text size="xs" c="dimmed" mt={4} fw={500}>{anggota.nim}</Text>
-                      {/* Teks Jurusan dengan aksen warna Merah Gelap */}
                       <Text size="xs" c="red.8" fw={700} mt={2}>{anggota.jurusan}</Text>
                     </Card>
                   </Grid.Col>

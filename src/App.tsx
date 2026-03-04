@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { HeroCarousel } from './components/HeroCarousel';
-import { Sejarah } from './components/Sejarah';
-import { Pengurus } from './components/Pengurus';
-import { Galeri } from './components/Galeri';
+import { Navbar } from './components/navbar/Navbar';
+import { HeroCarousel } from './components/herocarousel/HeroCarousel';
+import { Sejarah } from './components/sejarah/Sejarah';
+import { Pengurus } from './components/pengurus/Pengurus';
+import { Galeri } from './components/galeri/Galeri';
 // import { TentangKami } from './components/TentangKami';
-import { GaleriPage } from './components/GaleriPage';
-import { About } from './components/About';
-import { Footer } from './components/Footer';
+import { GaleriPage } from './components/galeripage/GaleriPage';
+import { About } from './components/about/About';
+import { Footer } from './components/footer/Footer';
 
 // Komponen untuk membungkus semua section di Homepage
 function Homepage() {

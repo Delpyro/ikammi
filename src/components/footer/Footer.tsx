@@ -2,20 +2,14 @@ import { Container, Grid, Text, Group, ActionIcon, Stack } from '@mantine/core';
 import { IconBrandInstagram, IconBrandTiktok, IconBrandYoutube, IconMapPin, IconPhone, IconMail } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import classes from './Footer.module.css';
 
 const quickLinks = [
-  { link: '#home', label: 'Beranda' },
-  { link: '#sejarah', label: 'Sejarah IKAMMI' },
-  { link: '#pengurus', label: 'Struktur Pengurus' },
-  { link: '#galeri', label: 'Galeri Kegiatan' },
-];
-
-const infoLinks = [
-  { link: '#info-maba', label: 'Pojok Perantau' },
-  { link: '#proker', label: 'Program Kerja' },
-  { link: '#faq', label: 'Tanya Jawab (FAQ)' },
-  { link: '#gabung', label: 'Pendaftaran' },
+  { link: '/', label: 'Beranda' },
+  { link: '/#sejarah', label: 'Sejarah IKAMMI' },
+  { link: '/#pengurus', label: 'Struktur Pengurus' },
+  { link: '/galeri', label: 'Galeri Kegiatan' },
 ];
 
 export function Footer() {
@@ -27,7 +21,6 @@ export function Footer() {
     },
   };
 
-  // Animasi lebih halus dengan custom ease ala website agensi Eropa
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 15 },
     visible: { 
@@ -35,7 +28,7 @@ export function Footer() {
       y: 0, 
       transition: { 
         duration: 0.8, 
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number] // ✅ Tambahkan ini
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number]
       } 
     },
   };
@@ -49,9 +42,9 @@ export function Footer() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <Grid gutter={{ base: 40, md: 60 }}>
+          <Grid gutter={{ base: 40, md: 60 }} justify="space-between">
             {/* KOLOM 1: Brand & Deskripsi */}
-            <Grid.Col span={{ base: 12, md: 4 }}>
+            <Grid.Col span={{ base: 12, md: 5 }}>
               <motion.div variants={itemVariants}>
                 <Text className={classes.logo}>
                   IKAMMI<span className={classes.logoHighlight}>.</span>UNSOED
@@ -63,35 +56,21 @@ export function Footer() {
             </Grid.Col>
 
             {/* KOLOM 2: Tautan Cepat */}
-            <Grid.Col span={{ base: 6, sm: 4, md: 2 }}>
+            <Grid.Col span={{ base: 12, sm: 5, md: 3 }}>
               <motion.div variants={itemVariants}>
                 <Text className={classes.title}>Tautan Cepat</Text>
                 <Stack gap="sm">
                   {quickLinks.map((item) => (
-                    <a key={item.label} href={item.link} className={classes.link}>
+                    <Link key={item.label} to={item.link} className={classes.link}>
                       {item.label}
-                    </a>
+                    </Link>
                   ))}
                 </Stack>
               </motion.div>
             </Grid.Col>
 
-            {/* KOLOM 3: Informasi Tambahan */}
-            <Grid.Col span={{ base: 6, sm: 4, md: 2 }}>
-              <motion.div variants={itemVariants}>
-                <Text className={classes.title}>Informasi</Text>
-                <Stack gap="sm">
-                  {infoLinks.map((item) => (
-                    <a key={item.label} href={item.link} className={classes.link}>
-                      {item.label}
-                    </a>
-                  ))}
-                </Stack>
-              </motion.div>
-            </Grid.Col>
-
-            {/* KOLOM 4: Kontak & Alamat */}
-            <Grid.Col span={{ base: 12, sm: 4, md: 4 }}>
+            {/* KOLOM 3: Kontak & Alamat */}
+            <Grid.Col span={{ base: 12, sm: 7, md: 4 }}>
               <motion.div variants={itemVariants}>
                 <Text className={classes.title}>Hubungi Kami</Text>
                 
@@ -138,4 +117,4 @@ export function Footer() {
       </Container>
     </footer>
   );
-}  
+}
