@@ -1,9 +1,9 @@
-import { Container, Grid, Text, Group, ActionIcon, Stack, ThemeIcon } from '@mantine/core';
+import { Container, Grid, Text, Group, ActionIcon, Stack } from '@mantine/core';
 import { IconBrandInstagram, IconBrandTiktok, IconBrandYoutube, IconMapPin, IconPhone, IconMail } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import classes from './Footer.module.css';
 
-// Data menu dipecah jadi 2 agar grid lebih seimbang
 const quickLinks = [
   { link: '#home', label: 'Beranda' },
   { link: '#sejarah', label: 'Sejarah IKAMMI' },
@@ -19,109 +19,118 @@ const infoLinks = [
 ];
 
 export function Footer() {
-  // Konfigurasi animasi Framer Motion
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  // Animasi lebih halus dengan custom ease ala website agensi Eropa
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.8, 
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number] // ✅ Tambahkan ini
+      } 
+    },
   };
 
   return (
     <footer className={classes.footer} id="kontak">
       <Container size="lg">
-        {/* Wrapper animasi Framer Motion */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <Grid gutter={50}>
-            {/* KOLOM 1: Brand & Deskripsi (Span 4) */}
-            <Grid.Col span={{ base: 12, md: 4 }} component={motion.div} variants={itemVariants}>
-              <Text className={classes.logo}>
-                IKAMMI <span className={classes.logoHighlight}>UNSOED</span>
-              </Text>
-              <Text className={classes.description} size="sm">
-                Wadah kekeluargaan mahasiswa Minangkabau di Universitas Jenderal Soedirman. Patah tumbuah hilang baganti, takang urat untuak mandaki.
-              </Text>
-            </Grid.Col>
-
-            {/* KOLOM 2: Tautan Cepat (Span 2) */}
-            <Grid.Col span={{ base: 6, sm: 4, md: 2 }} component={motion.div} variants={itemVariants}>
-              <Text className={classes.title}>Tautan Cepat</Text>
-              <Stack gap={0}>
-                {quickLinks.map((item) => (
-                  <a key={item.label} href={item.link} className={classes.link}>
-                    {item.label}
-                  </a>
-                ))}
-              </Stack>
-            </Grid.Col>
-
-            {/* KOLOM 3: Informasi Tambahan (Span 2) */}
-            <Grid.Col span={{ base: 6, sm: 4, md: 2 }} component={motion.div} variants={itemVariants}>
-              <Text className={classes.title}>Informasi</Text>
-              <Stack gap={0}>
-                {infoLinks.map((item) => (
-                  <a key={item.label} href={item.link} className={classes.link}>
-                    {item.label}
-                  </a>
-                ))}
-              </Stack>
-            </Grid.Col>
-
-            {/* KOLOM 4: Kontak & Alamat (Span 4) */}
-            <Grid.Col span={{ base: 12, sm: 4, md: 4 }} component={motion.div} variants={itemVariants}>
-              <Text className={classes.title}>Hubungi Kami</Text>
-              
-              <Group wrap="nowrap" align="flex-start" mb="sm" className={classes.contactItem}>
-                <ThemeIcon size="md" variant="light" color="red" radius="xl">
-                  <IconMapPin size={18} stroke={1.5} />
-                </ThemeIcon>
-                <Text size="sm" c="dimmed">
-                  Sekretariat IKAMMI Unsoed, Jl. HR Bunyamin, Purwokerto Utara, Banyumas
+          <Grid gutter={{ base: 40, md: 60 }}>
+            {/* KOLOM 1: Brand & Deskripsi */}
+            <Grid.Col span={{ base: 12, md: 4 }}>
+              <motion.div variants={itemVariants}>
+                <Text className={classes.logo}>
+                  IKAMMI<span className={classes.logoHighlight}>.</span>UNSOED
                 </Text>
-              </Group>
-              
-              <Group wrap="nowrap" align="center" mb="sm" className={classes.contactItem}>
-                <ThemeIcon size="md" variant="light" color="red" radius="xl">
-                  <IconPhone size={18} stroke={1.5} />
-                </ThemeIcon>
-                <Text size="sm" c="dimmed">+62 812-3456-7890 (Humas)</Text>
-              </Group>
-              
-              <Group wrap="nowrap" align="center" className={classes.contactItem}>
-                <ThemeIcon size="md" variant="light" color="red" radius="xl">
-                  <IconMail size={18} stroke={1.5} />
-                </ThemeIcon>
-                <Text size="sm" c="dimmed">ikammi.unsoed@gmail.com</Text>
-              </Group>
+                <Text className={classes.description}>
+                  Wadah kekeluargaan mahasiswa Minangkabau di Universitas Jenderal Soedirman. Patah tumbuah hilang baganti, takang urat untuak mandaki.
+                </Text>
+              </motion.div>
+            </Grid.Col>
+
+            {/* KOLOM 2: Tautan Cepat */}
+            <Grid.Col span={{ base: 6, sm: 4, md: 2 }}>
+              <motion.div variants={itemVariants}>
+                <Text className={classes.title}>Tautan Cepat</Text>
+                <Stack gap="sm">
+                  {quickLinks.map((item) => (
+                    <a key={item.label} href={item.link} className={classes.link}>
+                      {item.label}
+                    </a>
+                  ))}
+                </Stack>
+              </motion.div>
+            </Grid.Col>
+
+            {/* KOLOM 3: Informasi Tambahan */}
+            <Grid.Col span={{ base: 6, sm: 4, md: 2 }}>
+              <motion.div variants={itemVariants}>
+                <Text className={classes.title}>Informasi</Text>
+                <Stack gap="sm">
+                  {infoLinks.map((item) => (
+                    <a key={item.label} href={item.link} className={classes.link}>
+                      {item.label}
+                    </a>
+                  ))}
+                </Stack>
+              </motion.div>
+            </Grid.Col>
+
+            {/* KOLOM 4: Kontak & Alamat */}
+            <Grid.Col span={{ base: 12, sm: 4, md: 4 }}>
+              <motion.div variants={itemVariants}>
+                <Text className={classes.title}>Hubungi Kami</Text>
+                
+                <Group wrap="nowrap" align="flex-start" mb="md" className={classes.contactItem}>
+                  <IconMapPin size={20} stroke={1.2} className={classes.contactIcon} />
+                  <Text size="sm" className={classes.contactText}>
+                    Sekretariat IKAMMI Unsoed<br/>
+                    Jl. HR Bunyamin, Purwokerto Utara
+                  </Text>
+                </Group>
+                
+                <Group wrap="nowrap" align="center" mb="md" className={classes.contactItem}>
+                  <IconPhone size={20} stroke={1.2} className={classes.contactIcon} />
+                  <Text size="sm" className={classes.contactText}>+62 812-3456-7890</Text>
+                </Group>
+                
+                <Group wrap="nowrap" align="center" className={classes.contactItem}>
+                  <IconMail size={20} stroke={1.2} className={classes.contactIcon} />
+                  <Text size="sm" className={classes.contactText}>ikammi.unsoed@gmail.com</Text>
+                </Group>
+              </motion.div>
             </Grid.Col>
           </Grid>
 
-          {/* BOTTOM AREA: Copyright & Social Media */}
+          {/* BOTTOM AREA */}
           <motion.div className={classes.bottomArea} variants={itemVariants}>
-            <Text c="dimmed" size="sm" ta={{ base: 'center', md: 'left' }}>
-              © {new Date().getFullYear()} IKAMMI Unsoed. Dibuat dengan bangga oleh Urang Awak.
+            <Text className={classes.copyright} ta={{ base: 'center', md: 'left' }}>
+              © {new Date().getFullYear()} IKAMMI UNSOED. DIBUAT DENGAN BANGGA OLEH URANG AWAK.
             </Text>
             
-            <Group gap="sm" justify="center" mt={{ base: 'md', md: 0 }}>
-              <ActionIcon size="lg" color="gray" variant="filled" radius="xl" className={classes.socialIcon} component="a" href="https://instagram.com/" target="_blank">
-                <IconBrandInstagram size={20} stroke={1.5} />
+            <Group gap="md" justify="center" mt={{ base: 'xl', md: 0 }}>
+              <ActionIcon size="lg" radius="xl" className={classes.socialIcon} component="a" href="https://instagram.com/" target="_blank">
+                <IconBrandInstagram size={18} stroke={1.5} />
               </ActionIcon>
-              <ActionIcon size="lg" color="gray" variant="filled" radius="xl" className={classes.socialIcon} component="a" href="https://tiktok.com/" target="_blank">
-                <IconBrandTiktok size={20} stroke={1.5} />
+              <ActionIcon size="lg" radius="xl" className={classes.socialIcon} component="a" href="https://tiktok.com/" target="_blank">
+                <IconBrandTiktok size={18} stroke={1.5} />
               </ActionIcon>
-              <ActionIcon size="lg" color="gray" variant="filled" radius="xl" className={classes.socialIcon} component="a" href="https://youtube.com/" target="_blank">
-                <IconBrandYoutube size={20} stroke={1.5} />
+              <ActionIcon size="lg" radius="xl" className={classes.socialIcon} component="a" href="https://youtube.com/" target="_blank">
+                <IconBrandYoutube size={18} stroke={1.5} />
               </ActionIcon>
             </Group>
           </motion.div>
@@ -129,4 +138,4 @@ export function Footer() {
       </Container>
     </footer>
   );
-}
+}  

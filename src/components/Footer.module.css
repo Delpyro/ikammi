@@ -1,98 +1,112 @@
 .footer {
-  background-color: var(--mantine-color-dark-8); /* Sedikit lebih terang dari dark-9 agar tidak terlalu "mati" */
-  color: var(--mantine-color-dark-0);
-  padding-top: 80px;
+  background-color: #080808; /* Hitam pekat yang elegan (bukan abu-abu gelap) */
+  color: #ffffff;
+  padding-top: 100px; /* Diperbesar untuk kesan lega/spacious */
   padding-bottom: 40px;
-  border-top: 1px solid var(--mantine-color-dark-6);
-  overflow: hidden; /* Mencegah horizontal scroll saat animasi masuk */
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Garis batas yang sangat samar */
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .logo {
-  font-size: 1.75rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: white;
-  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 24px;
 }
 
 .logoHighlight {
-  color: var(--mantine-color-red-6);
+  color: var(--mantine-color-red-7);
 }
 
 .description {
-  color: var(--mantine-color-dark-2);
-  line-height: 1.6;
+  color: #888888;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  font-weight: 300;
+  max-width: 90%;
 }
 
 .title {
-  color: white;
-  font-size: 1.125rem;
-  font-weight: 700;
+  color: #555555; /* Abu-abu medium untuk judul agar tidak mendominasi */
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em; /* Jarak huruf lebar khas majalah Eropa */
   margin-bottom: 24px;
-  position: relative;
-}
-
-/* Tambahan garis dekoratif di bawah judul */
-.title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 32px;
-  height: 3px;
-  background-color: var(--mantine-color-red-6);
-  border-radius: 4px;
 }
 
 .link {
-  display: block;
-  color: var(--mantine-color-dark-2);
+  display: inline-block;
+  color: #aaaaaa;
   text-decoration: none;
-  font-size: 0.95rem;
-  padding-bottom: 12px;
-  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.3s ease;
 }
 
 .link:hover {
-  color: var(--mantine-color-red-5);
-  transform: translateX(6px); /* Mengganti padding-left dengan transform agar lebih mulus */
+  color: #ffffff;
+  /* Dihilangkan efek geser (translate) agar lebih profesional dan 'diam' */
 }
 
 .contactItem {
-  transition: transform 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 
 .contactItem:hover {
-  transform: translateX(4px);
+  opacity: 0.8;
 }
 
-.contactItem:hover p {
-  color: var(--mantine-color-dark-0);
+.contactIcon {
+  color: var(--mantine-color-red-7); /* Aksen warna dipertahankan tapi lebih tipis/halus */
 }
 
-.socialIcon {
-  background-color: var(--mantine-color-dark-6);
-  color: var(--mantine-color-dark-1);
-  transition: all 0.3s ease;
-}
-
-.socialIcon:hover {
-  background-color: var(--mantine-color-red-6);
-  color: white;
-  transform: translateY(-3px);
+.contactText {
+  color: #aaaaaa;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 .bottomArea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 60px;
-  padding-top: 24px;
-  border-top: 1px solid var(--mantine-color-dark-6);
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copyright {
+  color: #555555;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.socialIcon {
+  background-color: transparent;
+  color: #aaaaaa;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Outline transparan tipis */
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  background-color: #ffffff; /* Kontras tinggi saat dihover */
+  color: #000000;
+  border-color: #ffffff;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
   .bottomArea {
     flex-direction: column-reverse;
+    gap: 24px;
+  }
+  
+  .description {
+    max-width: 100%;
   }
 }

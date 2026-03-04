@@ -4,7 +4,7 @@ import { HeroCarousel } from './components/HeroCarousel';
 import { Sejarah } from './components/Sejarah';
 import { Pengurus } from './components/Pengurus';
 import { Galeri } from './components/Galeri';
-import { TentangKami } from './components/TentangKami';
+// import { TentangKami } from './components/TentangKami';
 import { GaleriPage } from './components/GaleriPage';
 import { About } from './components/About';
 import { Footer } from './components/Footer';
