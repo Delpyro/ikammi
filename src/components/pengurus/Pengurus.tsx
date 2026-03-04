@@ -9,7 +9,7 @@ const bphData = [
   { nama: "M. Zein Rifa'i", nim: 'A1D023048', jabatan: 'Ketua Umum', jurusan: 'Agroteknologi', foto: '/asset/zhen.png' },
   { nama: 'Ilona Petrina Henri', nim: 'A1D024266', jabatan: 'Wakil Ketua Umum', jurusan: 'Agroteknologi', foto: '/asset/ilona.png' },
   { nama: 'Muhammad Sholahatul Haq', nim: 'H1D024060', jabatan: 'Sekretaris', jurusan: 'Informatika', foto: '/asset/haq.png' },
-  { nama: 'Dinny Putri Ningsih', nim: 'B1A024165', jabatan: 'Bendahara', jurusan: 'Manajemen', foto: '/asset/dini.png' },
+  { nama: 'Dinny Putri Ningsih', nim: 'B1A024165', jabatan: 'Bendahara', jurusan: 'Biologi', foto: '/asset/dini.png' },
 ];
 
 // 2. DATA DIVISI (Ditambah Jurusan)
@@ -20,7 +20,7 @@ const divisiData = [
     deskripsi: 'Pengembangan Sumber Daya Anggota',
     foto: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     anggota: [
-      { nama: 'Sanial Bedri Jilan Indra', nim: 'B1A024120', jabatan: 'Kabid PSDA', jurusan: 'Manajemen', foto: '/asset/sanial.png' },
+      { nama: 'Sanial Bedri Jilan Indra', nim: 'B1A024120', jabatan: 'Kabid PSDA', jurusan: 'Biologi', foto: '/asset/sanial.png' },
       { nama: 'Cati Bilang Pandai', nim: 'E1A024248', jabatan: 'Staff PSDA', jurusan: 'Ilmu Hukum', foto: '/asset/cati.png' },
     ],
     proker: ['Malam Keakraban (Makrab) Maba', 'Upgrading Pengurus', 'Database Anggota IKAMMI'],

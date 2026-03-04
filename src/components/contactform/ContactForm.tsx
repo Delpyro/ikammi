@@ -84,7 +84,7 @@ export function ContactForm() {
                     <Grid.Col span={{ base: 12, sm: 6 }}>
                       <TextInput
                         label="Nama Langkok"
-                        placeholder="Cth: Muhammad Nabil"
+                        placeholder="Cth: Christiano Ronaldo"
                         name="nama"
                         value={formData.nama}
                         onChange={handleChange}
@@ -96,7 +96,7 @@ export function ContactForm() {
                     <Grid.Col span={{ base: 12, sm: 6 }}>
                       <TextInput
                         label="Jurusan / Angkatan"
-                        placeholder="Cth: Informatika 23"
+                        placeholder="Cth: Penjas 25"
                         name="jurusan"
                         value={formData.jurusan}
                         onChange={handleChange}
