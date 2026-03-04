@@ -1,0 +1,98 @@
+.footer {
+  background-color: var(--mantine-color-dark-8); /* Sedikit lebih terang dari dark-9 agar tidak terlalu "mati" */
+  color: var(--mantine-color-dark-0);
+  padding-top: 80px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--mantine-color-dark-6);
+  overflow: hidden; /* Mencegah horizontal scroll saat animasi masuk */
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.logoHighlight {
+  color: var(--mantine-color-red-6);
+}
+
+.description {
+  color: var(--mantine-color-dark-2);
+  line-height: 1.6;
+}
+
+.title {
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* Tambahan garis dekoratif di bawah judul */
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 32px;
+  height: 3px;
+  background-color: var(--mantine-color-red-6);
+  border-radius: 4px;
+}
+
+.link {
+  display: block;
+  color: var(--mantine-color-dark-2);
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  color: var(--mantine-color-red-5);
+  transform: translateX(6px); /* Mengganti padding-left dengan transform agar lebih mulus */
+}
+
+.contactItem {
+  transition: transform 0.2s ease;
+}
+
+.contactItem:hover {
+  transform: translateX(4px);
+}
+
+.contactItem:hover p {
+  color: var(--mantine-color-dark-0);
+}
+
+.socialIcon {
+  background-color: var(--mantine-color-dark-6);
+  color: var(--mantine-color-dark-1);
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  background-color: var(--mantine-color-red-6);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.bottomArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--mantine-color-dark-6);
+}
+
+@media (max-width: 768px) {
+  .bottomArea {
+    flex-direction: column-reverse;
+  }
+}

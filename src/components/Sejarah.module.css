@@ -1,0 +1,32 @@
+.wrapper {
+  position: relative;
+  background-color: #fafafa;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+
+.paperCard {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: var(--mantine-radius-xl);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  padding: 40px;
+}
+
+.quote {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--mantine-color-gray-7);
+  border-left: 4px solid var(--mantine-color-red-7);
+  padding-left: 20px;
+  margin-bottom: 40px;
+}
+
+/* Membuat gambar tetap menempel saat di-scroll */
+.stickyImage {
+  position: sticky;
+  top: 100px; 
+}
