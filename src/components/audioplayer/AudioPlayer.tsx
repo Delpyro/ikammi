@@ -32,7 +32,7 @@ export function AudioPlayer() {
   return (
     <>
       {/* Elemen Audio (Disembunyikan) - Pastikan src mengarah ke file kamu */}
-      <audio ref={audioRef} loop src="/asset/audio.mp3" preload="auto" />
+      <audio ref={audioRef} loop src="/asset/audio2.mp3" preload="auto" />
 
       {/* Tombol Melayang di Pojok Kanan Bawah */}
       <Transition transition="pop" duration={500} mounted={mounted}>
