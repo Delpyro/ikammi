@@ -4,6 +4,7 @@ import { HeroCarousel } from './components/herocarousel/HeroCarousel';
 import { Sejarah } from './components/sejarah/Sejarah';
 import { Pengurus } from './components/pengurus/Pengurus';
 import { Galeri } from './components/galeri/Galeri';
+import { ContactForm } from './components/contactform/ContactForm';
 // import { TentangKami } from './components/TentangKami';
 import { GaleriPage } from './components/galeripage/GaleriPage';
 import { About } from './components/about/About';
@@ -30,6 +31,9 @@ function Homepage() {
       </div>
       <div id="galeri">
         <Galeri />
+      </div>
+      <div id="ContactForm">
+        <ContactForm />
       </div>
       <div id="footer">
         <Footer  />

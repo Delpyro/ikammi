@@ -74,23 +74,45 @@ export function Footer() {
               <motion.div variants={itemVariants}>
                 <Text className={classes.title}>Hubungi Kami</Text>
                 
-                <Group wrap="nowrap" align="flex-start" mb="md" className={classes.contactItem}>
-                  <IconMapPin size={20} stroke={1.2} className={classes.contactIcon} />
-                  <Text size="sm" className={classes.contactText}>
-                    Sekretariat IKAMMI Unsoed<br/>
-                    Jl. HR Bunyamin, Purwokerto Utara
-                  </Text>
-                </Group>
+                {/* MAPS: Dibungkus tag <a> */}
+                <a 
+                  href="https://maps.app.goo.gl/xxx" // Ganti link Maps asli di sini
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Group wrap="nowrap" align="flex-start" mb="md" className={classes.contactItem}>
+                    <IconMapPin size={20} stroke={1.2} className={classes.contactIcon} />
+                    <Text size="sm" className={classes.contactText}>
+                      Sekretariat IKAMMI Unsoed<br/>
+                      Jl. HR Bunyamin, Purwokerto Utara
+                    </Text>
+                  </Group>
+                </a>
                 
-                <Group wrap="nowrap" align="center" mb="md" className={classes.contactItem}>
-                  <IconPhone size={20} stroke={1.2} className={classes.contactIcon} />
-                  <Text size="sm" className={classes.contactText}>+62 812-3456-7890</Text>
-                </Group>
+                {/* TELEPON/WHATSAPP: Dibungkus tag <a> */}
+                <a 
+                  href="https://wa.me/6285263866277" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Group wrap="nowrap" align="center" mb="md" className={classes.contactItem}>
+                    <IconPhone size={20} stroke={1.2} className={classes.contactIcon} />
+                    <Text size="sm" className={classes.contactText}>085263866277</Text>
+                  </Group>
+                </a>
                 
-                <Group wrap="nowrap" align="center" className={classes.contactItem}>
-                  <IconMail size={20} stroke={1.2} className={classes.contactIcon} />
-                  <Text size="sm" className={classes.contactText}>ikammi.unsoed@gmail.com</Text>
-                </Group>
+                {/* EMAIL: Dibungkus tag <a> */}
+                <a 
+                  href="mailto:ikammi.unsoed@gmail.com"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Group wrap="nowrap" align="center" className={classes.contactItem}>
+                    <IconMail size={20} stroke={1.2} className={classes.contactIcon} />
+                    <Text size="sm" className={classes.contactText}>ikammi.unsoed@gmail.com</Text>
+                  </Group>
+                </a>
               </motion.div>
             </Grid.Col>
           </Grid>
