@@ -8,9 +8,10 @@ import classes from './Navbar.module.css';
 const links = [
   { link: '/', label: 'Beranda' },
   { link: '/#profil', label: 'Profil' },
+  { link: '/#sejarah', label: 'Sejarah' },
   { link: '/#pengurus', label: 'Pengurus' },
   { link: '/galeri', label: 'Galeri' },
-  { link: '/#kontak', label: 'Tanyo ciek' },
+  // { link: '/#ContactForm', label: 'Tanyo ciek' },
 ];
 
 export function Navbar() {
@@ -81,16 +82,17 @@ export function Navbar() {
           {items}
         </Group>
 
-        {/* TOMBOL & BURGER MOBILE */}
-        {/* TOMBOL & BURGER MOBILE */}
+        {/* TOMBOL DESKTOP */}
         <Group>
           <Button 
+            component={Link}          /* ✅ Jadikan tombol sebagai Link Router */
+            to="/#tanyo-ciek"         /* ✅ Arahkan ke ID form Tanyo Ciek */
             radius="xl" 
             color="red.7" 
-            variant="filled" /* BERUBAH: Selalu gunakan 'filled' agar tombol terlihat di background putih */
+            variant="filled" 
             visibleFrom="sm"
           >
-            Gabuang lai
+            Tanyo Ciek
           </Button>
           
           <Burger 
@@ -98,7 +100,7 @@ export function Navbar() {
             onClick={toggle} 
             hiddenFrom="md" 
             size="sm" 
-            color="#000" /* BERUBAH: Selalu gunakan hitam (#000) agar terlihat di background putih */
+            color="#000"
           />
         </Group>
 
@@ -114,7 +116,17 @@ export function Navbar() {
             >
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {items}
-                <Button fullWidth color="red.7" mt="md" radius="md">Gabuang lai</Button>
+                <Button 
+                  component={Link}      /* ✅ Jadikan tombol sebagai Link Router */
+                  to="/#tanyo-ciek"     /* ✅ Arahkan ke ID form Tanyo Ciek */
+                  fullWidth 
+                  color="red.7" 
+                  mt="md" 
+                  radius="md"
+                  onClick={close}       /* ✅ Wajib ada agar menu tertutup setelah diklik */
+                >
+                  Tanyo Ciek
+                </Button>
               </div>
             </Paper>
           )}
