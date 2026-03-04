@@ -102,7 +102,7 @@ export function Galeri() {
             window.scrollTo(0, 0); // Memastikan saat pindah halaman, posisinya di atas
           }}
         >
-          Telusuri Lebih Banyak
+          Caliak sadonyo
         </Button>
       </Box>
 

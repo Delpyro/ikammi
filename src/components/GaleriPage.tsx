@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { Container, Title, Text, Breadcrumbs, Anchor, Group, Button, Modal, Image as MantineImage } from '@mantine/core';
+import { useState, useMemo } from 'react';
+import { Container, Title, Text, Breadcrumbs, Anchor, Group, Button } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import classes from './GaleriPage.module.css';
 
 // Data semua gambar dari folder public/asset/galeri/ berdasarkan screenshot
@@ -13,7 +15,6 @@ const allImages = [
   // { title: 'Bounding', url: '/asset/galeri/bounding4.jpeg' },
   // { title: 'Bukber', url: '/asset/galeri/bukber.jpeg' },
   { title: 'Bukber 2025', url: '/asset/galeri/bukber2025.jpeg' },
-  { title: 'Bukber 2026', url: '/asset/galeri/bukber2026.jpeg' },
   { title: 'Curug', url: '/asset/galeri/curug2.jpeg' },
   { title: 'Curug', url: '/asset/galeri/curugg.jpeg' },
   { title: 'Curug', url: '/asset/galeri/curug3.jpeg' },
@@ -33,26 +34,27 @@ const allImages = [
   { title: 'Pangsud', url: '/asset/galeri/pangsud2.jpg' },
   { title: 'Pulang Basamo', url: '/asset/galeri/pulang basamo.jpeg' },
   { title: 'Pulang Basamo', url: '/asset/galeri/pulang basamo2.jpeg' },
+  { title: 'Bukber 2026', url: '/asset/galeri/bukber2026.jpeg' },
 ];
 
 export function GaleriPage() {
   const navigate = useNavigate();
-  const [opened, setOpened] = useState(false);
-  const [selectedImg, setSelectedImg] = useState<{title: string, url: string} | null>(null);
+  // State sekarang menyimpan index dari gambar yang diklik, -1 berarti tertutup
+  const [index, setIndex] = useState(-1);
 
   const breadcrumbItems = [
     { title: 'Beranda', href: '/' },
     { title: 'Semua Galeri', href: '/galeri' },
-  ].map((item, index) => (
-    <Anchor onClick={() => navigate(item.href)} key={index} c="dimmed" size="sm" style={{ cursor: 'pointer' }}>
+  ].map((item, idx) => (
+    <Anchor onClick={() => navigate(item.href)} key={idx} c="dimmed" size="sm" style={{ cursor: 'pointer' }}>
       {item.title}
     </Anchor>
   ));
 
-  const openLightbox = (image: {title: string, url: string}) => {
-    setSelectedImg(image);
-    setOpened(true);
-  };
+  // Format array untuk Lightbox (mengubah url menjadi src)
+  const slides = useMemo(() => 
+    allImages.map((item) => ({ src: item.url, title: item.title })), 
+  []);
 
   return (
     <>
@@ -70,11 +72,11 @@ export function GaleriPage() {
 
         {/* Layout Masonry CSS */}
         <div className={classes.masonryGrid}>
-          {allImages.map((image, index) => (
+          {allImages.map((image, i) => (
             <div 
-              key={index} 
+              key={i} 
               className={classes.masonryItem}
-              onClick={() => openLightbox(image)}
+              onClick={() => setIndex(i)} // Buka Lightbox di index yang di-klik
             >
               <img src={image.url} alt={image.title} className={classes.image} loading="lazy" />
               <div className={classes.overlay}>
@@ -91,25 +93,13 @@ export function GaleriPage() {
         </Group>
       </Container>
 
-      {/* Lightbox / Modal untuk melihat gambar full size */}
-      <Modal 
-        opened={opened} 
-        onClose={() => setOpened(false)} 
-        size="auto" 
-        centered 
-        withCloseButton={false}
-        padding={0}
-      >
-        {selectedImg && (
-          <div style={{ position: 'relative' }}>
-            <MantineImage 
-              src={selectedImg.url} 
-              alt={selectedImg.title} 
-              style={{ maxHeight: '90vh', objectFit: 'contain' }}
-            />
-          </div>
-        )}
-      </Modal>
+      {/* Lightbox dengan fitur geser/swipe yang menggantikan Modal */}
+      <Lightbox
+        open={index >= 0}
+        index={index}
+        close={() => setIndex(-1)}
+        slides={slides}
+      />
     </>
   );
 }

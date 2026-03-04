@@ -10,7 +10,7 @@ const links = [
   { link: '/#profil', label: 'Profil' },
   { link: '/#pengurus', label: 'Pengurus' },
   { link: '/galeri', label: 'Galeri' },
-  { link: '/#kontak', label: 'Hubungi Kami' },
+  { link: '/#kontak', label: 'Tanyo ciek' },
 ];
 
 export function Navbar() {
@@ -90,7 +90,7 @@ export function Navbar() {
             variant="filled" /* BERUBAH: Selalu gunakan 'filled' agar tombol terlihat di background putih */
             visibleFrom="sm"
           >
-            Gabung Kito
+            Gabuang lai
           </Button>
           
           <Burger 
@@ -114,7 +114,7 @@ export function Navbar() {
             >
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {items}
-                <Button fullWidth color="red.7" mt="md" radius="md">Gabung Kito</Button>
+                <Button fullWidth color="red.7" mt="md" radius="md">Gabuang lai</Button>
               </div>
             </Paper>
           )}

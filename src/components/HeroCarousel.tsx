@@ -60,15 +60,14 @@ export function HeroCarousel() {
 
 return (
     <Carousel
-      withIndicators // <--- INI YANG MEMUNCULKAN INDIKATOR DI BAWAH
+      withIndicators 
       withControls
       emblaOptions={{ loop: true }}
       height="85vh"
       plugins={[autoplay.current]}
-      onMouseEnter={autoplay.current.stop}
-      onMouseLeave={autoplay.current.reset}
+      // onMouseEnter={autoplay.current.stop}
+      // onMouseLeave={autoplay.current.reset}
       styles={{
-        // 1. Styling untuk Indikator (Garis bawah)
         indicator: {
           width: 30, // Lebar garis
           height: 6, // Ketebalan garis

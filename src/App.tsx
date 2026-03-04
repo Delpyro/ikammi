@@ -31,11 +31,24 @@ function Homepage() {
       <div id="galeri">
         <Galeri />
       </div>
-      <div id="profil">
+      <div id="footer">
         <Footer  />
       </div>
     </>
   );
+}
+
+function Galeripage(){
+  return(
+    <>
+      <div id="galeri">
+        <GaleriPage  />
+      </div>
+      <div id="footer">
+        <Footer  />
+      </div>
+    </>
+  )
 }
 
 function App() {
@@ -48,7 +61,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           
           {/* Jalur untuk Halaman Full Galeri */}
-          <Route path="/galeri" element={<GaleriPage />} />
+          <Route path="/galeri" element={<Galeripage />} />
         </Routes>
       </main>
     </BrowserRouter>
