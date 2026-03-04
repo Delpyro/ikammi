@@ -8,6 +8,7 @@ import { ContactForm } from './components/contactform/ContactForm';
 // import { TentangKami } from './components/TentangKami';
 import { GaleriPage } from './components/galeripage/GaleriPage';
 import { About } from './components/about/About';
+import { AudioPlayer } from './components/audioplayer/AudioPlayer';
 import { Footer } from './components/footer/Footer';
 
 // Komponen untuk membungkus semua section di Homepage
@@ -35,6 +36,9 @@ function Homepage() {
       <div id="ContactForm">
         <ContactForm />
       </div>
+      <div id="AudioPlayer">
+        <AudioPlayer />
+      </div>
       <div id="footer">
         <Footer  />
       </div>
@@ -47,6 +51,9 @@ function Galeripage(){
     <>
       <div id="galeri">
         <GaleriPage  />
+      </div>
+      <div id="AudioPlayer">
+        <AudioPlayer />
       </div>
       <div id="footer">
         <Footer  />
