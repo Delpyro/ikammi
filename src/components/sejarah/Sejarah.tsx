@@ -18,7 +18,7 @@ export function Sejarah() {
               </Title>
               
               <Image 
-                src="https://getlost.id/wp-content/uploads/2021/11/jam-gadang_1999979717.jpg" 
+                src="asset/galeri/pangsud2.jpg" 
                 alt="Pemandangan Minangkabau" 
                 radius="md"
                 // shadow="md"
